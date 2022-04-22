@@ -1,3 +1,4 @@
+/*
 const prompt = require('prompt-sync') ({signit: true});
 
 var balance = 100;
@@ -32,3 +33,29 @@ if(bankAction === "deposit") {
         }
     }
 }
+
+//Reconstruct
+
+function add(howMuch, balance) {
+    return a + b;
+}
+
+function subtract(balance, howMuch) {
+    return a - b;
+}
+*/
+
+var x = 40;
+
+if ( x % 10 == 0) {
+
+    console.log("Divisible by 10");
+    
+    }
+    
+    else{
+    
+    console.log("Not divisible by 10");
+    
+    }
+
