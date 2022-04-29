@@ -9,22 +9,29 @@ var inputBool = Boolean(prompt('Add in a piece of data'));
 
 
 
-function pushTo(a, b, c) {
-if (typeof a == "string") {
-    names.push(a);
-}
+// function pushTo(a, b, c) {
+// if (typeof a == "string") {
+//     names.push(a);
+// }
 
 
-if (typeof b == "number") {
-    num.push(b);
+// if (typeof b == "number") {
+//     num.push(b);
+// }
+
+// if (typeof c === "boolean") {
+//     booli.push(c);
+// }
+// console.log(names);
+// console.log(num);
+// console.log(booli);
+// }
+
+function pushTo(arr ,b){
+    if (typeof b == typeof arr[0]) {
+        arr.push(b);
+    }
+    return arr;
 }
 
-if (typeof c === "boolean") {
-    booli.push(c);
-}
-console.log(names);
-console.log(num);
-console.log(booli);
-}
-
-console.log(pushTo(input, inputNum, inputBool));
+console.log(pushTo([],"12"));
