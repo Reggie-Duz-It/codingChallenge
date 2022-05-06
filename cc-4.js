@@ -1,3 +1,4 @@
+const prompt = require('prompt-sync') ({signit: true});
 //EASY: Write a function that would allow you to do this:
 
 var run = function (running) {
@@ -29,29 +30,98 @@ console.log(sharePizza(2));
 
 //Hard: 
 
-var Person = (function() {
-    var private = new WeakMap();
+class pii {
+    #name;
+    #ssn;
+    constructor(name, ssn) {
+        this.#name = name;
+        this.#ssn = ssn;
 
-    function Person(ssn, name) {
-     this.name = name;
-      Person.prototype.getName = function() {
-      return `${this.name}`;
-     }
-        
-        var privateProperties = {
-            ssn: ssn
-        };
-        private.set(this, privateProperties);
     }
 
-    Person.prototype.getSSN = function() {
-        return private.get(this).ssn;
-    };
+    getName() {
+    return this.#name;
+    }
+}
+
+const Jerry = new pii("Jerry", 254382004);
+console.log(Jerry.getName());
+
+//Very Hard
+
+class Person {
+    constructor (pName, pJob, pAge) {
+     this.pName = pName;
+     this.pJob = pJob;
+     this.pAge = pAge;
+    }
+
+    excercise() {
+        console.log("Runninig is fun...said no one ever!");
+    }
+
+    fetchJob() {
+        console.log(`${this.pName} is a ${this.pJob}`);
+    }
+}
+
+class Programmer extends Person {
+    busy = true;
+    languageArr = [];
+    constructor (pName, pJob, pAge, languages){
+        super(pName, pJob, pAge);
+        this.languages = languages;
+        
+        
+    }
+
+    completeTask() {
+        this.busy = false;
+    }
+
+    acceptNewTask() {
+        this.busy = true;
+    }
+
+    offerNewTask() {
+        if (this.busy === true){
+            console.log(`${this.pName} is cannot accept new task right now!`);
+        }
+        else if(this.busy === false) {
+            console.log(`${this.pName} would love to accept a new task.`);
+        }
+    }
+
+     learnLanguages() {
+         this.languages = prompt("What language did you learn today?");
+         this.languageArr.push(this.languages);
+        return `Language learned!`;
+        
+     }
+    listLanguages(){
+         for (let i = 0; i < this.languageArr.length; i++){
+          console.log(this.languageArr[i]);
+         }
+        
+    }
+
+}
+const Terry = new Programmer("Terry", "Web Developer", 27,);
+Terry.fetchJob();
+console.log(Terry.busy);
+Terry.completeTask();
+console.log(Terry.busy);
+console.log(Terry.busy);
+Terry.acceptNewTask();
+console.log(Terry.busy);
+Terry.offerNewTask();
+Terry.completeTask();
+Terry.offerNewTask();
+console.log(Terry.learnLanguages());
+console.log(Terry.learnLanguages());
+console.log(Terry.learnLanguages());
+console.log(Terry.learnLanguages());
+Terry.listLanguages();
 
 
-    return Person;
-}());
 
-var reggie = new Person(485297730, "Reginald");
-console.log('Person Name: ' + reggie.getName() + ' Person SSN: ' + Object.getOwnPropertyNames(reggie) );
-//Couldn't get the SSN to stop displaying name, I know it had something to with the Object.getOwnPropertyNames
